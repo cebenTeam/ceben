@@ -11,7 +11,6 @@ const ContentPreview = () => {
         <Metadata>
           <Title>웹에서의 가변 글꼴에 대한 소개</Title>
           <Excerpt>이 기사에서는 가변 글꼴(variable fonts)이 무엇이고 이를 작업에서 어떻게 사용할 수 있는지와 함께 가변 글꼴의 잠재적 가능성을 살펴볼 것입니다.</Excerpt>
-          {/* <Tag>UI</Tag> */}
         </Metadata>
       </LinkWrapper>
     </Article>
