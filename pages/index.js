@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import SEO from '@/components/SEO/SEO'
 import Header from '@/components/Header/Header'
 import Inner from '@/components/Inner/Inner'
+import ContentPreview from '@/components/ContentPreview/ContentPreview'
 
 const Homepage = () => {
   return (
@@ -10,6 +11,7 @@ const Homepage = () => {
       <SEO />
       <Header></Header>
       <Main as="main">
+        <ContentPreview />
       </Main>
     </>
   )
@@ -21,7 +23,8 @@ const Title = styled.h2`
 `
 
 const Main = styled(Inner)`
-  padding-top: 60px;
+  min-height: calc(100vh - 124px);
+  padding-top: 80px;
   padding-bottom: 60px;
 `
 

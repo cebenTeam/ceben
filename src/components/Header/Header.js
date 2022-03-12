@@ -8,18 +8,18 @@ const Header = () => {
     <Wrapper>
       <Content>
         <Branding>
-          <Link href="/" passHref><Logo title="ceben">Ceben</Logo></Link>
+          <Link href="/" passHref><Logo title="ceben">CEBEN</Logo></Link>
         </Branding>
         <Navigation>
-          <Link href="/project" passHref><NavLink>프로젝트</NavLink></Link>
+          {/* <Link href="/project" passHref><NavLink>프로젝트</NavLink></Link>
           <Link href="/blog" passHref><NavLink>블로그</NavLink></Link>
-          <Link href="/team" passHref><NavLink>팀</NavLink></Link>
+          <Link href="/team" passHref><NavLink>팀</NavLink></Link> */}
         </Navigation>
         <Actions>
           {/* <IconButton>
             <img src="/images/search.svg" width="26" alt="" />
           </IconButton> */}
-          <IconButton>
+          <IconButton type="button">
             <img src="/images/sun.svg" width="22" alt="" />
           </IconButton>
         </Actions>
@@ -34,7 +34,7 @@ const Wrapper = styled.header`
 const Content = styled(Inner)`
   display: flex;
   align-items: center;
-  height: 84px;
+  height: 124px;
 `
 
 const Branding = styled.h1`
@@ -46,6 +46,8 @@ const Logo = styled.a`
   display: flex;
   align-items: center;
   width: 112px;
+  font-size: 16px;
+  letter-spacing: 4px;
 `
 
 const Navigation = styled.nav`

@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
   *, ::before, ::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     line-height: calc(1em + 0.625rem);
   }
 
