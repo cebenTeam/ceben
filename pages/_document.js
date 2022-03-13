@@ -1,5 +1,9 @@
 // From: https://dev.to/normancarcamo/comment/10391
 // FOUC 현상 해결을 위한 코드
+
+// https://github.com/nblthree/nextjs-with-material-ui-and-styled-components/blob/master/pages/_document.js
+// 이건 나중에 필요할 것 같아서 일단 주소 남김
+
 import Document from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
