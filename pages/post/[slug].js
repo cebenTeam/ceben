@@ -3,17 +3,29 @@ import { MDXRemote } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import WebPButton from 'post-helpers/webp-button'
+import SEO from '@/components/SEO/SEO'
+import Header from '@/components/Header/Header'
+import Main from '@/components/Main/Main'
 
-const components = { SyntaxHighlighter, WebPButton }
+const components = { SyntaxHighlighter }
 
-const PostPage = ({ title, date, mdxSource }) => {
+const PostPage = ({
+  title,
+  date,
+  mdxSource
+}) => {
   return (
-    <div>
-      <h1>{title}</h1>
-      <MDXRemote {...mdxSource} components={components} />
-    </div>
+    <>
+      <SEO title={title}></SEO>
+      <Header></Header>
+      <Main>
+        <h2>{title}</h2>
+        <MDXRemote {...mdxSource} components={components} />
+      </Main>
+    </>
   )
 }
 
