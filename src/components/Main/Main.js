@@ -6,15 +6,13 @@ const Main = ({
 }) => {
   return (
     <Wrapper>
-      <Content>
-        {children}
-      </Content>
+      <Content>{children}</Content>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.main`
-  min-height: calc(100vh - 124px);
+  min-height: 100vh;
   padding-top: 80px;
   padding-bottom: 60px;
 `

@@ -9,8 +9,14 @@ import WebPButton from 'post-helpers/webp-button'
 import SEO from '@/components/SEO/SEO'
 import Header from '@/components/Header/Header'
 import Main from '@/components/Main/Main'
+import Heading from '@/components/Heading/Heading'
+import Paragraph from '@/components/Paragraph/Paragraph'
 
-const components = { SyntaxHighlighter }
+const components = {
+  Heading,
+  Paragraph,
+  SyntaxHighlighter
+}
 
 const PostPage = ({
   title,
@@ -20,10 +26,16 @@ const PostPage = ({
   return (
     <>
       <SEO title={title}></SEO>
-      <Header></Header>
+      {/* <Header></Header> */}
       <Main>
-        <h2>{title}</h2>
-        <MDXRemote {...mdxSource} components={components} />
+        <PostWrapper>
+          <PostHeader>
+            <Heading as="h1">{title}</Heading>
+          </PostHeader>
+          <PostBody>
+            <MDXRemote {...mdxSource} components={components} />
+          </PostBody>
+        </PostWrapper>
       </Main>
     </>
   )
@@ -57,5 +69,22 @@ export const getStaticProps = async ({ params: { slug } }) => {
     }
   }
 }
+
+const PostWrapper = styled.div`
+  overflow-wrap: break-word;
+`
+
+const PostHeader = styled.div`
+  text-align: center;
+  margin-bottom: 80px;
+  @media (max-width: 640px) {
+    text-align: left;
+  }  
+`
+
+const PostBody = styled.div`
+  max-width: 675px;
+  margin: auto;
+`
 
 export default PostPage

@@ -45,6 +45,7 @@ const Logo = styled.a`
   display: flex;
   align-items: center;
   width: 112px;
+  color: #0f0d1d;
   font-size: 16px;
   letter-spacing: 4px;
 `

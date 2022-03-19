@@ -11,7 +11,7 @@ const Homepage = ({ posts }) => {
   return (
     <>
       <SEO />
-      <Header></Header>
+      {/* <Header></Header> */}
       <Main>
         {posts.map(({
           title,

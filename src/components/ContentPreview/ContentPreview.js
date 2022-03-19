@@ -35,6 +35,7 @@ const Article = styled.article`
 
 const LinkWrapper = styled.a`
   display: block;
+  color: #0f0d1d;
 `
 
 const Thumbnail = styled.div`
@@ -66,7 +67,7 @@ const Excerpt = styled.p`
 `
 
 const ReadMore = styled.span`
-  color: #0044e4;
+  color: #6a5fe3;
   &:after {
     content: "→";
     display: inline-block;
