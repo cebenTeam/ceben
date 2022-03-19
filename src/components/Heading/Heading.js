@@ -17,7 +17,11 @@ const Heading = ({
     break
   }
 
-  return <Component children={children} />
+  return (
+    <Component>
+      {children}
+    </Component>
+  )
 }
 
 const H1 = styled.h1`

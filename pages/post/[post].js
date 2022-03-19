@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import WebPButton from 'post-helpers/webp-button'
 import SEO from '@/components/SEO/SEO'
-import Header from '@/components/Header/Header'
 import Main from '@/components/Main/Main'
 import Heading from '@/components/Heading/Heading'
 import Paragraph from '@/components/Paragraph/Paragraph'
@@ -28,14 +27,14 @@ const PostPage = ({
       <SEO title={title}></SEO>
       {/* <Header></Header> */}
       <Main>
-        <PostWrapper>
-          <PostHeader>
+        <Wrapper>
+          <Header>
             <Heading as="h1">{title}</Heading>
-          </PostHeader>
-          <PostBody>
+          </Header>
+          <Body>
             <MDXRemote {...mdxSource} components={components} />
-          </PostBody>
-        </PostWrapper>
+          </Body>
+        </Wrapper>
       </Main>
     </>
   )
@@ -45,7 +44,7 @@ export const getStaticPaths = async () => {
   const files = fs.readdirSync(path.join('posts'))
   const paths = files.map(filename => ({
     params: {
-      slug: filename.replace('.mdx', '')
+      post: filename.replace('.mdx', '').toString()
     }
   }))
 
@@ -55,8 +54,8 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async ({ params: { slug } }) => {
-  const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.mdx'), 'utf-8')
+export const getStaticProps = async ({ params: { post } }) => {
+  const markdownWithMeta = fs.readFileSync(path.join('posts', post + '.mdx'), 'utf-8')
 
   const { data, content } = matter(markdownWithMeta)
   const mdxSource = await serialize(content)
@@ -64,17 +63,17 @@ export const getStaticProps = async ({ params: { slug } }) => {
   return {
     props: {
       ...data,
-      slug,
+      post,
       mdxSource
     }
   }
 }
 
-const PostWrapper = styled.div`
+const Wrapper = styled.article`
   overflow-wrap: break-word;
 `
 
-const PostHeader = styled.div`
+const Header = styled.div`
   text-align: center;
   margin-bottom: 80px;
   @media (max-width: 640px) {
@@ -82,7 +81,7 @@ const PostHeader = styled.div`
   }  
 `
 
-const PostBody = styled.div`
+const Body = styled.div`
   max-width: 675px;
   margin: auto;
 `

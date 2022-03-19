@@ -30,7 +30,6 @@ const Article = styled.article`
   &:not(:first-child) {
     margin-top: 80px;
   }
-  border-radius: 8px;
 `
 
 const LinkWrapper = styled.a`
