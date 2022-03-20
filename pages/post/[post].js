@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import WebPButton from 'post-helpers/webp-button'
 import SEO from '@/components/SEO/SEO'
-import Main from '@/components/Main/Main'
+import StandardLayout from '@/components/StandardLayout/StandardLayout'
 import Heading from '@/components/Heading/Heading'
 import Paragraph from '@/components/Paragraph/Paragraph'
 
@@ -23,20 +23,15 @@ const PostPage = ({
   mdxSource
 }) => {
   return (
-    <>
+    <Wrapper>
       <SEO title={title}></SEO>
-      {/* <Header></Header> */}
-      <Main>
-        <Wrapper>
-          <Header>
-            <Heading as="h1">{title}</Heading>
-          </Header>
-          <Body>
-            <MDXRemote {...mdxSource} components={components} />
-          </Body>
-        </Wrapper>
-      </Main>
-    </>
+      <Header>
+        <Heading as="h1">{title}</Heading>
+      </Header>
+      <Body>
+        <MDXRemote {...mdxSource} components={components} />
+      </Body>
+    </Wrapper>
   )
 }
 

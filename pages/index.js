@@ -3,32 +3,28 @@ import path from 'path'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 import SEO from '@/components/SEO/SEO'
-import Header from '@/components/Header/Header'
-import Main from '@/components/Main/Main'
+import StandardLayout from '@/components/StandardLayout/StandardLayout'
 import ContentPreview from '@/components/ContentPreview/ContentPreview'
 
 const Homepage = ({ posts }) => {
   return (
-    <>
+    <Wrapper>
       <SEO />
-      {/* <Header></Header> */}
-      <Main>
-        {posts.map(({
-          title,
-          date,
-          slug,
-          excerpt
-        }) => (
-          <ContentPreview
-            key={slug}
-            title={title}
-            date={date}
-            slug={slug}
-            excerpt={excerpt}
-          />
-        ))}
-      </Main>
-    </>
+      {posts.map(({
+        title,
+        date,
+        slug,
+        excerpt
+      }) => (
+        <ContentPreview
+          key={slug}
+          title={title}
+          date={date}
+          slug={slug}
+          excerpt={excerpt}
+        />
+      ))}
+    </Wrapper>
   )
 }
 
@@ -50,5 +46,9 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+const Wrapper = styled.div`
+  
+`
 
 export default Homepage
