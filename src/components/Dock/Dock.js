@@ -1,8 +1,12 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue } from 'framer-motion'
 
 const Dock = () => {
+
+  const mouseX = useMotionValue(null)
+  console.log(mouseX)
+
   return (
     <Wrapper>
       <Link href="/" passHref>
@@ -19,6 +23,12 @@ const Dock = () => {
           <Tooltip>포스트</Tooltip>
         </Launch>
       </Link>
+      <Link href="/" passHref>
+        <Launch whileHover={{ width: 80, height: 80 }}>
+          <img src="/assets/icons/tutorial.svg" alt="" />
+          <Tooltip>튜토리얼</Tooltip>
+        </Launch>
+      </Link>      
       <Link href="/" passHref>
         <Launch whileHover={{ width: 80, height: 80 }}>
           <img src="/assets/icons/project.svg" alt="" />

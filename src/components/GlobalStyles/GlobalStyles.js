@@ -3,10 +3,6 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   /* Global styles */
-  ::selection {
-    background-color: #ecebfc;
-  }
-
   * {
     margin: 0;
     padding: 0;
