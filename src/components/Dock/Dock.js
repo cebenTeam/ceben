@@ -1,53 +1,56 @@
-import Link from 'next/link'
 import styled from 'styled-components'
-import { motion, useMotionValue } from 'framer-motion'
+import { useMotionValue } from 'framer-motion'
+import Launch from './Launch'
+
+const apps = {
+  home: {
+    name: '홈',
+    icon: 'home',
+    href: '/'
+  },
+  post: {
+    name: '포스트',
+    icon: 'post',
+    href: '/'
+  },
+  tutorial: {
+    name: '튜토리얼',
+    icon: 'tutorial',
+    href: '/'
+  },
+  project: {
+    name: '프로젝트',
+    icon: 'project',
+    href: '/'
+  },
+  github: {
+    name: '깃허브',
+    icon: 'github',
+    href: '/'
+  },
+  theme: {
+    name: '다크모드',
+    icon: 'sun',
+    href: '/'
+  },  
+}
 
 const Dock = () => {
-
   const mouseX = useMotionValue(null)
-  console.log(mouseX)
 
   return (
-    <Wrapper>
-      <Link href="/" passHref>
-        <Launch whileHover={{ width: 80, height: 80 }}>
-          <img src="/assets/icons/home.svg" alt="" />
-          <Tooltip>홈</Tooltip>
-          <Dot></Dot>
-        </Launch>
-      </Link>
-      <HR />
-      <Link href="/" passHref>
-        <Launch whileHover={{ width: 80, height: 80 }}>
-          <img src="/assets/icons/docs.svg" alt="" />
-          <Tooltip>포스트</Tooltip>
-        </Launch>
-      </Link>
-      <Link href="/" passHref>
-        <Launch whileHover={{ width: 80, height: 80 }}>
-          <img src="/assets/icons/tutorial.svg" alt="" />
-          <Tooltip>튜토리얼</Tooltip>
-        </Launch>
-      </Link>      
-      <Link href="/" passHref>
-        <Launch whileHover={{ width: 80, height: 80 }}>
-          <img src="/assets/icons/project.svg" alt="" />
-          <Tooltip>프로젝트</Tooltip>
-        </Launch>
-      </Link>
-      <Link href="/" passHref>
-        <Launch whileHover={{ width: 80, height: 80 }}>
-          <img src="/assets/icons/github.svg" alt="" />
-          <Tooltip>깃허브</Tooltip>          
-        </Launch>
-      </Link>
-      <HR />
-      <Link href="/" passHref>
-        <Launch whileHover={{ width: 80, height: 80 }}>
-          <img src="/assets/icons/sun.svg" alt="" />
-          <Tooltip>다크모드</Tooltip>
-        </Launch>
-      </Link>
+    <Wrapper
+      onMouseMove={(event) => mouseX.set(event.nativeEvent.x)}
+      onMouseLeave={() => mouseX.set(null)}
+    >
+      {Object.keys(apps).map((appID, i) => (
+        <Launch
+          key={i}
+          mouseX={mouseX}
+          appID={appID}
+          {...apps[appID]}
+        ></Launch>
+      ))}
     </Wrapper>
   )
 }
@@ -65,54 +68,6 @@ const Wrapper = styled.nav`
   transform: translate(-50%, -24px);
   background-color: rgba(176, 179, 188, 0.1);
   backdrop-filter: blur(40px);
-`
-
-const Tooltip = styled.span`
-  position: absolute;
-  left: 50%;
-  top: 0;
-  padding: 4px 8px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translate(-50%, calc(-100%));
-  transition: all .24s .4s cubic-bezier(0,0,.2,1);  
-  border: 1px soild #dedede;
-  border-radius: 4px;
-  background-color: rgba(176, 179, 188, 0.1);
-  backdrop-filter: blur(40px);
-`
-
-const Launch = styled(motion.a)`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  color: var(--text-color);
-  background-color: #f0f0f2;
-  border-radius: 12px;
-  &:hover ${Tooltip} {
-    opacity: 1;
-    transition: all .24s .6s cubic-bezier(0,0,.2,1);  
-    transform: translate(-50%, calc(-120%));
-  }
-  img {
-    width: 50%;
-    height: 50%;
-  }
-`
-
-const Dot = styled.span`
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 4px;  
-  height: 4px;
-  transform: translate(-50%, 0);
-  background-color: #dedede;
-  border-radius: 50%;
 `
 
 const HR = styled.hr`
