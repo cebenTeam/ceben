@@ -15,8 +15,8 @@ const Homepage = ({ posts }) => {
           특별한 <TextClip>경험</TextClip>을 담기에<br />더 할 나위 없이 좋은 곳
         </MainTitle>
         <SubTitle>
-          Ceben은 프론트엔드 개발자를 위한 공간을 마련했습니다. <br />
-          새로운 것을 배우거나 흥미로운 인터페이스를 감상해보세요!
+          Ceben은 프론트엔드 개발자를 위한 공간입니다.<br />
+          새로운 것을 배우거나 흥미로운 인터페이스를 감상해 보세요!
         </SubTitle>
 
       {/* {posts.map(({
